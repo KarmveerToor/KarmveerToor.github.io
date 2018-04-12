@@ -3,16 +3,40 @@
 
   <head>
     <style>
+      table {
+        width: 75%;
+        margin-left: -10%;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      td {
+        text-align: center;
+      }
+
       * {
         box-sizing: border-box;
         font-family: sans-serif;
       }
 
-      .header,
-      .footer {
+      .header {
         background-color: black;
         color: white;
         padding: 15px;
+      }
+
+      .footer {
+        position: fixed;
+        background-color: black;
+        color: white;
+        padding: 15px;
+        right: 0;
+        bottom: 0;
+        left: 0;
       }
 
       .column {
@@ -60,6 +84,13 @@
         background-color: #0099cc
       }
 
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+
     </style>
   </head>
 
@@ -78,16 +109,44 @@
       </div>
 
       <div class="column content">
-        <h3>
-
-          The Website is for HTML references. It will include the TAGs I use the most and the most common TAGs in general. They are dvided into differnet categories to ensure that the needed TAG is easy to find.
-        </h3>
-
+        <center>
+          <h2>Boilerplate Code</h2>
+        </center>
+        <p>
+          Boilerplate code refers to the manatory minimal code that is required to make the webstite work. Boilerplate code is the code that donesn;t change and every page coded has to have it.</p>
 
         <div class="column content more">
+          <table style="width:100%">
+            <tr>
+              <th>TAG</th>
+              <th>Definition</th>
+              <th>Example</th>
 
+            </tr>
+            <tr>
+              <td>&lt;!DOCTYPE&gt;</td>
+              <td>Defines the document type</td>
+              <td>Certificate of Graduation</td>
+
+            </tr>
+            <tr>
+              <td>University of British Columbia, Vancouver</td>
+              <td>2006</td>
+              <td>Business Degree</td>
+              <td>Business Studies, Computing Science</td>
+              <td>99.8%</td>
+            </tr>
+            <tr>
+              <td>University of Oxford, England</td>
+              <td>2011</td>
+              <td>Masters in Systems Software(MSS)</td>
+              <td> Software Engineering, Operating Systems, Computational Structures, Computer Networks, Cloud Computing, Web Technologies, Cloud Computing</td>
+              <td>100%</td>
+            </tr>
+          </table>
 
           <div class="column content more">
+
 
           </div>
 
