@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Laboratory</title>
+    <style>
+      body {
+        background-color: black;
+        background-image: url("https://3.bp.blogspot.com/-xMNsPeoyXAw/VvBzOhVxCWI/AAAAAAAC2uI/cFifrPohZd47lzN4nYBI8eo2AyDRVw4Pg/s1600/Heilsta%25CC%2588tte%2BGrabowsee%2BSanatorium%2BAbandoned%2BBerlin-1170925.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      h1 {
+        font-size: 40px;
+        color: white;
+      }
+
+    </style>
+    <script>
+      let keycard = false;
+
+
+
+      //Begin the game with a few lines of introduction.
+      function gameStart() {
+        keycard = false;
+        alert("You woke up in the middle of a hallway, unsure of how you got here.");
+        let name = prompt("What would you like to be called?");
+        alert("Alright, " + name + ", let's see what you've got here.");
+        if (confirm("Would you like to play the game?")) {
+          alert("OK, let us begin.");
+          gameContinue();
+        } else {
+          alert("Come back when you would like.");
+        }
+      }
+
+      function gameContinue() {
+        alert("You seem to be in some sort of hospital, " + name + ". Behind you there is a door, but it needs you to find a keycard to open it.");
+        alert("The hallway you're in only leads straight.");
+        let firstChoice = prompt("You have one choice, to go FORWARD.").toUpperCase();
+        switch (firstChoice) {
+          case "FORWARD":
+            alert("You have entered a laboratory");
+            laboratoryRoom();
+            //continue this path here.
+
+            break;
+          default:
+            alert("I don't understand " + firstChoice + " as an input. Please try again.")
+            gameContinue();
+        }
+      }
+
+
+      function laboratoryRoom() { //comes from forward.
+        alert("The room is a mess. Tables are flipped over, test tubes are cracked. At the back of the room there is a computer. There are rooms going to the right and left.");
+        let secondChoice = prompt("You can go to COMPUTER, LEFT, RIGHT, or BACK.").toUpperCase();
+        switch (secondChoice) {
+          case "COMPUTER":
+            alert("The computer required a password.");
+            computer();
+
+            break;
+
+          case "LEFT":
+            alert("You have entered the hospital's pharmacy.");
+            hospitalsPharmacy();
+
+            break;
+
+          case "BACK":
+            alert("You have entered the hallway again.");
+            hallway();
+
+            break;
+
+          case "RIGHT":
+            alert("You have entered the operation room.");
+            operationRoom();
+
+            break;
+
+          default:
+            alert("I don't understand " + secondChoice + " as an input. Please try again.")
+            laboratoryRoom();
+        }
+      }
+
+      function hallway() {
+        if (keycard === true) {
+          alert("The door unlocks!")
+          alert("You can leave now!")
+          exit();
+        }
+        if (keycard === false) {
+          alert("You don't have the keycard yet.")
+          alert("You have to go back to the labratory.")
+          laboratoryRoom();
+        }
+      }
+
+      function hospitalsPharmacy() { //comes from laboratory.
+        alert("Like the laboratory this room is a mess. The light is flickering, but you can makeout a door leading to your left, and a table seven feet infront of you.");
+        let thirdChoice = prompt("You can go to LEFT, to the TABLE, or BACK").toUpperCase();
+        switch (thirdChoice) {
+          case "LEFT":
+            alert("You seemed to enter a storage room.");
+            storageRoom();
+
+            break;
+
+          case "TABLE":
+            alert("You have walked up to the table.");
+            table();
+
+            break;
+
+          case "BACK":
+            alert("You went back to the laboratory.");
+            laboratoryRoom();
+
+            break;
+
+          default:
+            alert("I don't understand " + thirdChoice + " as an input. Please try again.")
+            hospitalsPharmacy();
+        }
+      }
+
+      function table() { //in the pharmacy.
+        alert("On the table there is a bottle of medication, and a note.");
+        let fourthChoice = prompt("Do you want to EAT the medication, PICK UP the note, or go BACK.").toUpperCase();
+        switch (fourthChoice) {
+          case "Eat":
+            alert("You shouldn't have done that. You have died.");
+            alert("I'll send you back to the start.");
+            gameStart();
+
+            break;
+
+          case "PICK UP":
+            alert("Writen on the note is _ _ _ L _ _.");
+            table();
+
+            break;
+
+          case "BACK":
+            alert("You went back to the pharmacy.");
+            hospitalsPharmacy();
+
+            break;
+
+          default:
+            alert("I don't understand " + fourthChoice + " as an input. Please try again.")
+            table();
+        }
+      }
+
+      function storageRoom() { //from the pharmacy.
+        alert("You have entered a fairly small room. There is cracked glass all over the floor, and the air smells terrible. On the wall written in red is A _ _ _ _ M.");
+        let fifthChoice = prompt("Since there is glass on the ground, you can only BACK").toUpperCase();
+        switch (fifthChoice) {
+          case "BACK":
+            hospitalsPharmacy();
+
+            break;
+
+          default:
+            alert("I don't understand " + fifthChoice + " as an input. Please try again.")
+            storageRoom();
+        }
+      }
+
+      function computer() {
+        alert('The password is six letters.');
+        var code = prompt('What is the code? (Other option is to BACK away.)').toUpperCase();
+        if (code === "BACK") {
+          alert('You backed away.')
+          laboratoryRoom();
+        }
+        if (code === "ASYLUM") {
+          alert("You were able to log on.")
+          alert("As you logged on, the computer printed a keycard. You can use it to leave.")
+          keycard = true;
+          laboratoryRoom();
+        } else {
+          alert('The code was invalid.')
+          computer();
+        }
+      }
+
+      function operationRoom() { //comes from laboratory.
+        alert("You entered a bloody operation room. In the middle of the room is an operation table. To the right is a seperate room");
+        let sixthChoice = prompt("You can go to the TABLE, BACK, or you can go to the RIGHT.").toUpperCase();
+        switch (sixthChoice) {
+          case "RIGHT":
+            alert("You have entered a radiology room.");
+            radiologyRoom();
+
+            break;
+
+          case "TABLE":
+            alert("You have walked up to the table.");
+            table2();
+
+            break;
+
+          case "BACK":
+            alert("You went back to the laboratory.");
+            laboratoryRoom();
+
+            break;
+
+          default:
+            alert("I don't understand " + sixthChoice + " as an input. Please try again.")
+            operationRoom();
+        }
+      }
+
+      function table2() { //in the pharmacy.
+        alert("There is note on the table covered in blood.");
+        let seventhChoice = prompt("Do you want to PICK UP the note, or BACK away.").toUpperCase();
+        switch (seventhChoice) {
+          case "PICK UP":
+            alert("On the note is written, _ S Y _ _ _ ");
+            operationRoom();
+
+            break;
+
+          case "BACK":
+            alert("You back away");
+            operationRoom();
+
+          default:
+            alert("I don't understand " + seventhChoice + " as an input. Please try again.")
+            table2();
+        }
+      }
+
+      function radiologyRoom() {
+        alert("This room unlike the others was fairly well kept. Everything seemed to be in order. The only thing out of place was a note taped to were the x-ray scans are held. It reads _ _ _ _ U _.");
+        let eighthChoice = prompt("Everything else seems to be in order. You can LEAVE the room.").toUpperCase();
+        switch (eighthChoice) {
+          case "LEAVE":
+            operationRoom();
+
+            break;
+
+          default:
+            alert("I don't understand " + eighthChoice + " as an input. Please try again.")
+            storageRoom();
+        }
+      }
+
+      function exit() {
+        alert("Congratulations, you have one the game! Thanks for playing");
+      }
+
+    </script>
+
+
+  </head>
+
+  <body>
+    <center>
+      <h1>
+        The Hospital
+      </h1>
+    </center>
+    <center><button onclick="gameStart()">Play Game</button></center>
+  </body>
+
+</html>
