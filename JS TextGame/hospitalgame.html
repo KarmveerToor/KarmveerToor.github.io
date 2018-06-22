@@ -163,6 +163,7 @@
         let fifthChoice = prompt("Since there is glass on the ground, you can only BACK").toUpperCase();
         switch (fifthChoice) {
           case "BACK":
+            alert("You have gone back to the pharmacy room")
             hospitalsPharmacy();
 
             break;
@@ -244,6 +245,7 @@
         let eighthChoice = prompt("Everything else seems to be in order. You can LEAVE the room.").toUpperCase();
         switch (eighthChoice) {
           case "LEAVE":
+            alert("You have walked back to the operation room.")
             operationRoom();
 
             break;
